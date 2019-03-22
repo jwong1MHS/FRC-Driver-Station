@@ -7,20 +7,26 @@ echo "---TURNING ON WINDOWS DEFENDER---"
 Set-MpPreference -DisableRealtimeMonitoring $false
 
 echo "Ok" "" "---TURNING ON FIREWALL---"
-NetSh Advfirewall set allprofiles state on
+netsh advfirewall set allprofiles state on
 
 echo "---TURNING ON WINDOWS UPDATE---"
 sc.exe start wuauserv
 
 echo "Done" "" "---ENABLING WIFI---"
-Enable-NetAdapter -Name Wi-Fi -Confirm:$false
+netsh interface set interface Wi-Fi enable
 
 echo "Done" "" "---CHANGING BACK TO DYNAMIC IP---"
-Get-NetAdapter -Name Ethernet | Set-NetIPInterface -Dhcp Enabled
+Set-NetIPInterface -InterfaceAlias "Ethernet" -Dhcp Enabled
 
 echo "Done" "" "---CHANGING POWER PLAN---"
-echo "WHAT POWER PLAN WOULD YOU LIKE TO CHANGE TO?" "1) POWER SAVER" "2) BALANCED" "3) HIGH PERFORMANCE" ""
-$plan = Read-Host
+
+$plan = Read-Host @"
+WHAT POWER PLAN WOULD YOU LIKE TO CHANGE TO?
+1) POWER SAVER
+2) BALANCED"
+3) HIGH PERFORMANCE
+
+"@
 if ($plan -eq "2") {
   echo "" "---CHANGING POWER PLAN TO BALANCED---"
   powercfg.exe /s 381b4222-f694-41f0-9685-ff5bb260df2e
@@ -33,5 +39,6 @@ else {
   echo "" "---CHANGING POWER PLAN TO POWER SAVER---"
   powercfg.exe /s a1841308-3541-4fab-bc81-f71556f20b4a
 }
+
 echo "Done" ""
-Read-Host -Prompt "---Press Enter to exit"
+Read-Host "---Press Enter to exit"

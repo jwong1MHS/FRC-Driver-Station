@@ -7,19 +7,22 @@ echo "---TURNING OFF WINDOWS DEFENDER---"
 Set-MpPreference -DisableRealtimeMonitoring $true
 
 echo "Done" "" "---TURNING OFF FIREWALL---"
-NetSh Advfirewall set allprofiles state off
+netsh advfirewall set allprofiles state off
 
 echo "---TURNING OFF WINDOWS UPDATE---"
 sc.exe stop wuauserv
 
 echo "Done" "" "---DISABLING WIFI---"
-Disable-NetAdapter -Name Wi-Fi -Confirm:$false
+netsh interface set interface Wi-Fi disable
 
-echo "Done" "" "--SETTING STATIC IP---"
-New-NetIPAddress –InterfaceAlias “Ethernet” –IPAddress “10.12.57.5” –PrefixLength 8
+echo "Done" "" "---ENABLING ETHERNET---"
+netsh interface set interface Ethernet enable
+
+echo "Done" "" "---SETTING STATIC IP---"
+netsh interface ip set address Ethernet static 10.12.57.5 255.0.0.0
 
 echo "Done" "" "---CHANGING POWER PLAN TO HIGH PERFORMANCE---"
 powercfg.exe /s 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c
 
 echo "Done" ""
-Read-Host -Prompt "---Press Enter to exit"	
+Read-Host "---Press Enter to exit"	
