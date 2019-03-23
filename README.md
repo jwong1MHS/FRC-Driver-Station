@@ -2,11 +2,9 @@
 
 Powershell scripts that will automatically enable and disable several Window processes on your Driver Station computer when you are connected to the robot to make your CPU more stable and allow for less packet loss.
 
-This project was inspired from a blog post by FRC Team 3847: Spectrum, and all I simply did was add more to the things that should be disabled. More information can be found here: http://spectrum3847.org/driver-station-stop-processes-scripts/.
-
 The scripts are to be run in administrative mode, and any shortcuts made must target to the script file location.
 
-Any brief flashes of red means that the script is crashing. Give script execution permissions by going to Powershell by typing "Set-ExecutionPolicy RemoteSigned" and pressing A and Enter
+Any brief flashes of red means that the script is crashing. Give script execution permissions by typing "Set-ExecutionPolicy RemoteSigned" and pressing A and Enter in Powershell.
 
 **This script will:**
 * Change power plan to High Performance
@@ -15,7 +13,13 @@ Any brief flashes of red means that the script is crashing. Give script executio
 * Disable Windows Defender
 * Disable Windows Firewall
 * Disable Windows Update
-* Set a static ip
+* Set a static ip as 10.TE.AM.5 with a subnet mask of 255.0.0.0
 
 **Known bugs:**
-* After enabling Ethernet again, sometimes it fails to automatically connect, so you would have to Disable and Enable back in Control Panel
+* Setting static IP only works for 4 digit teams right now
+
+*This project was inspired from a blog post by FRC Team 3847: Spectrum as well as some mistakes made by me during competition. More information can be found here: http://spectrum3847.org/driver-station-stop-processes-scripts/.*
+
+
+Enjoy!
+-Jason Wong | Driver (2017-2019) | Control Systems Captain (2018-2019)

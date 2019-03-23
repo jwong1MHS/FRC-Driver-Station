@@ -23,11 +23,15 @@ echo "Done" "" "---CHANGING POWER PLAN---"
 $plan = Read-Host @"
 WHAT POWER PLAN WOULD YOU LIKE TO CHANGE TO?
 1) POWER SAVER
-2) BALANCED"
+2) BALANCED
 3) HIGH PERFORMANCE
 
 "@
-if ($plan -eq "2") {
+if ($plan -eq "1") {
+  echo "" "---CHANGING POWER PLAN TO POWER SAVER---"
+  powercfg.exe /s a1841308-3541-4fab-bc81-f71556f20b4a
+} 
+elseif ($plan -eq "2") {
   echo "" "---CHANGING POWER PLAN TO BALANCED---"
   powercfg.exe /s 381b4222-f694-41f0-9685-ff5bb260df2e
 } 
@@ -36,7 +40,7 @@ elseif ($plan -eq "3") {
   powercfg.exe /s 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c
 }
 else {
-  echo "" "---CHANGING POWER PLAN TO POWER SAVER---"
+  echo "" "---DEFAULTING TO POWER SAVER---"
   powercfg.exe /s a1841308-3541-4fab-bc81-f71556f20b4a
 }
 
