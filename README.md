@@ -1,6 +1,6 @@
-# FRC Driver Station #
+# FRC Driver Station
 
-Powershell scripts that will automatically enable and disable several Window processes on your Driver Station computer when you are connected to the robot to make your CPU more stable and allow for less packet loss.
+These are a collection of Powershell scripts that will automatically enable and disable several Window processes on your Driver Station computer when you are connected to the robot to make your CPU more stable and allow for less packet loss.
 
 The scripts are to be run in administrative mode, and any shortcuts made must target to the script file location.
 
@@ -22,4 +22,5 @@ Any brief flashes of red means that the script is crashing. Give script executio
 
 
 Enjoy!
--Jason Wong | Driver (2017-2019) | Control Systems Captain (2018-2019)
+
+-Jason Wong | FRC 1257 Parallel Universe | Driver (2017-2019) | Control Systems Captain (2018-2019)
