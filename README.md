@@ -4,7 +4,7 @@ These are a collection of Powershell scripts that will automatically enable and 
 
 The scripts are to be run in administrative mode, and any shortcuts made must target to the script file location.
 
-Any brief flashes of red means that the script is crashing. Give script execution permissions by typing "Set-ExecutionPolicy RemoteSigned" and pressing A and Enter in Powershell.
+Any brief flashes of red means that the script is crashing. Give script execution permissions by typing "Set-ExecutionPolicy RemoteSigned" and pressing A and Enter in Powershell Administrator.
 
 **This script will:**
 * Change power plan to High Performance
