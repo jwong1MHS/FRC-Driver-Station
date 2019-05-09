@@ -20,14 +20,28 @@ netsh advfirewall set allprofiles state off
 echo "---TURNING OFF WINDOWS UPDATE---"
 sc.exe stop wuauserv
 
-echo "Done" "" "---DISABLING WIFI---"
-netsh interface set interface Wi-Fi disable
 
-echo "Done" "" "---ENABLING ETHERNET---"
-netsh interface set interface Ethernet enable
+echo "Done" "" "---CHANGING NETWORK SETTINGS---"
 
-echo "Done" "" "---SETTING STATIC IP---"
-netsh interface ip set address Ethernet static $ip 255.0.0.0
+$plan = Read-Host @"
+WOULD YOU LIKE TO DISABLE WIFI?
+0) NO
+1) YES
+
+"@
+if ($plan -eq "1") {
+  echo "Done" "" "---DISABLING WIFI---"
+  netsh interface set interface Wi-Fi disable
+
+  echo "Done" "" "---ENABLING ETHERNET---"
+  netsh interface set interface Ethernet enable
+
+  echo "Done" "" "---SETTING STATIC IP---"
+  netsh interface ip set address Ethernet static $ip 255.0.0.0	
+} 
+else {
+  echo "" "---DEFAULTING TO NO WIFI---"
+}
 
 echo "Done" "" "---CHANGING POWER PLAN TO HIGH PERFORMANCE---"
 powercfg.exe /s 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c
